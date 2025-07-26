@@ -28,8 +28,8 @@ header {
 }
 
 header h1 {
-  font-size: 1.5rem;
-  color: #c896fc;
+  font-size: 2rem;
+  color: #9beaf0;
   margin: 0;
 }
 
@@ -167,9 +167,9 @@ img {
 }
 
 h2 {
-  font-size: 2rem;
-  color: #c896fc;
-  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #1f3538;
+  margin-bottom: 0.3rem;
 }
 
 .welcome-title {
@@ -178,7 +178,7 @@ h2 {
 
 .destaque {
   font-style: italic;
-  background-color: rgba(200, 150, 252, 0.1);
+  background-color: rgba(192, 139, 250, 0.178);
   padding: 0.5rem;
   border-radius: 8px;
 }
@@ -413,4 +413,198 @@ h2 {
 #galeria p {
   margin: 0.2rem 0;
   font-size: 0.9rem;
+}
+
+/*PERFIL*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --cor-primaria: #ffffff49;
+  --cor-secundaria: #756388;
+  /*--cor-fundo: #d6d3d6;*/
+  --cor-texto: #333;
+  --cor-destaque: #ffffff;
+  --cor-hover: #341e38;
+}
+
+/* Remove o background anterior */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--cor-texto);
+  line-height: 1.6;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.video-background iframe {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* Cabeçalho */
+header {
+  background: var(--cor-primaria);
+  color: var(--cor-destaque);
+  text-align: center;
+  padding: 0.5rem 2rem;
+}
+
+header img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-top: 1rem;
+}
+
+/* Navegação */
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  background: var(--cor-secundaria);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav a {
+  color: var(--cor-destaque);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--cor-hover);
+}
+
+/* Conteúdo Principal */
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.2rem;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 2rem auto 0 auto;;
+}
+
+/* Seções */
+section {
+  padding: 1.5rem;
+  background: var(--cor-destaque);
+  border-left: 5px solid var(--cor-primaria);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+/* Lista de habilidades */
+section ul {
+  list-style: inside square;
+  margin-top: 0.5rem;
+}
+
+/* Artigos */
+article {
+  background: #eeeeee;
+  padding: 1.5rem;
+  border-left: 4px solid var(--cor-secundaria);
+  font-style: italic;
+  position: relative;
+}
+
+article::after {
+  content: "★";
+  position: absolute;
+  bottom: 0.5rem;
+  right: 1rem;
+  color: var(--cor-secundaria);
+}
+
+/* Aside */
+aside {
+  background: #ddd;
+  padding: 1.5rem;
+  border-left: 4px solid var(--cor-secundaria);
+}
+
+aside ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+aside li {
+  margin: 0.5rem 0;
+}
+
+aside a {
+  color: var(--cor-primaria);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+aside a:hover {
+  color: var(--cor-hover);
+}
+
+/* Rodapé */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: var(--cor-primaria);
+  color: var(--cor-destaque);
+  margin-top: 2rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header img {
+    width: 90px;
+    height: 90px;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  section, article, aside {
+    padding: 1rem;
+    border-radius: 15px;
+  }
+}
+
+section {
+  border-radius: 15px;
+  background-color: #aaa9a9ea; /* mesma cor do header */
+  border: 2px solid #a0f8f8; /* cor neon igual ao título */
+  color: var(--cor-destaque); /* texto branco para contraste */
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  box-shadow: 0 0 10px #faf9fa;
 }

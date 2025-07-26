@@ -1,6 +1,7 @@
 # 🌟 Site Pessoal - Paula Pelizer
 
 Este site é um **exercício prático** da lista de Desenvolvimento Web Básico, desenvolvido como parte de um curso para consolidar os conhecimentos em **HTML, CSS e JavaScript**.
+Link: https://paulapelizer.github.io/Front-End-Basic/
 
 ## 📌 Objetivos do Projeto
 

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hobbies - Paula Pelizer</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      height: 100%;
+      background: #111;
+      color: white;
+    }
+
+    body {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 3rem 1rem 1rem;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background-color: rgba(200, 200, 200, 0.2);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1.2rem;
+      box-sizing: border-box;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      color: #c896fc;
+      margin: 0;
+    }
+
+    .menu-toggle {
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 6px;
+      padding: 0.2rem 0.5rem;
+      margin-left: auto;
+      position: relative;
+    }
+
+    nav {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: rgba(200, 200, 200, 0.3);
+      backdrop-filter: blur(10px);
+      padding: 0.5rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      margin-top: 0.3rem;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      z-index: 1001;
+    }
+
+    .menu-toggle:hover + nav,
+    nav:hover {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    nav a:hover {
+      background: #c896fc;
+      color: #111;
+    }
+
+    .section-content {
+      width: 95vw;
+      max-width: 1100px;
+      background-color: rgba(220, 220, 220, 0.2);
+      padding: 0.1rem;
+      border-radius: 20px;
+      border: 2px solid #c896fc;
+      box-shadow: 0 0 20px #c896fc;
+      backdrop-filter: blur(5px);
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #c896fc;
+      margin-bottom: 0.5rem;
+    }
+
+    .hobbies-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.3rem;
+      margin: 0.3rem 0;
+    }
+
+    .hobby-list, .recipe-list {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.6rem;
+      border-radius: 12px;
+      border: 1px solid rgba(200, 150, 252, 0.3);
+    }
+
+    .hobby-list h3, .recipe-list h3 {
+      color: #c896fc;
+      margin-bottom: 1rem;
+    }
+
+    ul, ol {
+      text-align: left;
+      margin-left: 2rem;
+    }
+
+    .external-links {
+      margin-top: 0.3rem;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(200, 150, 252, 0.3);
+    }
+
+    .external-links h3 {
+      color: #c896fc;
+      margin-bottom: 1rem;
+    }
+
+    .external-links a {
+      display: inline-block;
+      margin: 0.3rem;
+      padding: 0.5rem 1rem;
+      background: rgba(200, 150, 252, 0.2);
+      color: #c896fc;
+      text-decoration: none;
+      border-radius: 8px;
+      border: 1px solid #c896fc;
+      transition: all 0.3s ease;
+    }
+
+    .external-links a:hover {
+      background: #c896fc;
+      color: #111;
+    }
+
+    @media (max-width: 768px) {
+      .hobbies-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      nav {
+        right: -10px;
+        flex-direction: column;
+        min-width: 120px;
+      }
+
+      nav a {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+      }
+    }
+
+    footer {
+      background-color: rgba(200, 200, 200, 0.2);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+      border-top: 2px solid #c896fc;
+      width: 100%;
+    }
+
+    footer p {
+      margin: 0.2rem 0;
+      color: #ddd;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Paula Pelizer</h1>
+    <button class="menu-toggle">☰</button>
+    <nav id="menu">
+      <a href="index.html">Início</a>
+      <a href="missao-visao.html">Missão e Visão</a>
+      <a href="listas.html">Hobbies</a>
+      <a href="galeria.html">Galeria</a>
+      <a href="feedback.html">Feedback</a>
+    </nav>
+  </header>
+
+  <div class="section-content">
+    <h2>Meus Hobbies</h2>
+    <div class="hobbies-grid">
+      <div class="hobby-list">
+        <h3>Atividades que Amo</h3>
+        <ul>
+          <li>Codar</li>
+          <li>Viajar</li>
+          <li>Patinar no gelo</li>
+          <li>Tocar piano</li>
+          <li>Snowboard</li>
+        </ul>
+      </div>
+      <div class="recipe-list">
+        <h3>Receita: Café Perfeito</h3>
+        <ol>
+          <li>Aqueça a água até 90-95°C</li>
+          <li>Moa os grãos na hora</li>
+          <li>Coloque o filtro</li>
+          <li>Adicione o café moído</li>
+          <li>Despeje a água lentamente</li>
+          <li>Aguarde passar</li>
+          <li>Sirva e aproveite!</li>
+        </ol>
+      </div>
+    </div>
+    <div class="external-links">
+      <h3>Links Úteis</h3>
+      <a href="https://github.com/paulapelizer" target="_blank">Meu GitHub</a>
+      <a href="https://www.tripadvisor.com.br/Restaurants-g303374-c31-Belo_Horizonte_State_of_Minas_Gerais.html" target="_blank">Cafeterias de BH | Onde tomar café em Belo Horizonte</a>
+      <a href="https://www.youtube.com/watch?v=123456789" target="_blank">Vídeo preferido de patinação artística</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Paula Pelizer. Todos os direitos reservados.</p>
+    <p>Curso +prati | Codifica</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Missão e Visão - Paula Pelizer</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      height: 100%;
+      background: #111;
+      color: white;
+    }
+
+    body {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 3rem 1rem 1rem;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background-color: rgba(200, 200, 200, 0.2);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1.2rem;
+      box-sizing: border-box;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      color: #c896fc;
+      margin: 0;
+    }
+
+    .menu-toggle {
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 6px;
+      padding: 0.2rem 0.5rem;
+      margin-left: auto;
+      position: relative;
+    }
+
+    nav {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: rgba(200, 200, 200, 0.3);
+      backdrop-filter: blur(10px);
+      padding: 0.5rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      margin-top: 0.3rem;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      z-index: 1001;
+    }
+
+    .menu-toggle:hover + nav,
+    nav:hover {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    nav a:hover {
+      background: #c896fc;
+      color: #111;
+    }
+
+    .section-content {
+      width: 95vw;
+      max-width: 1100px;
+      background-color: rgba(220, 220, 220, 0.2);
+      padding: 0.8rem;
+      border-radius: 20px;
+      border: 2px solid #c896fc;
+      box-shadow: 0 0 20px #c896fc;
+      backdrop-filter: blur(5px);
+    }
+
+    .mission-vision-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .mission-section, .vision-section {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.6rem;
+      border-radius: 12px;
+      border: 1px solid rgba(200, 150, 252, 0.3);
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #c896fc;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .mission-vision-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      nav {
+        right: -10px;
+        flex-direction: column;
+        min-width: 120px;
+      }
+
+      nav a {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+      }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      background-color: rgba(200, 200, 200, 0.2);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      padding: 1rem;
+      border-top: 2px solid #c896fc;
+      width: 100%;
+    }
+
+    footer p {
+      margin: 0.2rem 0;
+      color: #ddd;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Paula Pelizer</h1>
+    <button class="menu-toggle">☰</button>
+    <nav id="menu">
+      <a href="index.html">Início</a>
+      <a href="missao-visao.html">Missão e Visão</a>
+      <a href="listas.html">Hobbies</a>
+      <a href="feedback.html">Feedback</a>
+      <a href="galeria.html">Galeria</a>
+    </nav>
+  </header>
+
+  <div class="section-content">
+    <div class="mission-vision-grid">
+      <div class="mission-section">
+        <h2>Missão</h2>
+        <p>Promover soluções digitais criativas com impacto positivo.</p>
+      </div>
+      <div class="vision-section">
+        <h2>Visão</h2>
+        <p>Ser referência em tecnologia acessível e inclusiva.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Paula Pelizer. Todos os direitos reservados.</p>
+    <p>Curso +prati | Codifica</p>
+  </footer>
+</body>
+</html>

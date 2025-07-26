@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback - Paula Pelizer</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      height: 100%;
+      background: #111;
+      color: white;
+    }
+
+    body {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2.5rem 1rem 1rem;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background-color: rgba(200, 200, 200, 0.2);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1.2rem;
+      box-sizing: border-box;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      color: #c896fc;
+      margin: 0;
+    }
+
+    .menu-toggle {
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 6px;
+      padding: 0.2rem 0.5rem;
+      margin-left: auto;
+      position: relative;
+    }
+
+    nav {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: rgba(200, 200, 200, 0.3);
+      backdrop-filter: blur(10px);
+      padding: 0.5rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      margin-top: 0.3rem;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      z-index: 1001;
+    }
+
+    .menu-toggle:hover + nav,
+    nav:hover {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    nav a:hover {
+      background: #c896fc;
+      color: #111;
+    }
+
+    .section-content {
+      width: 95vw;
+      max-width: 1100px;
+      background-color: rgba(220, 220, 220, 0.2);
+      padding: 0.8rem;
+      border-radius: 20px;
+      border: 2px solid #c896fc;
+      box-shadow: 0 0 20px #c896fc;
+      backdrop-filter: blur(5px);
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #c896fc;
+      margin-bottom: 1rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    label {
+      font-size: 0.96rem;
+      margin-bottom: 6px;
+      color: #347f8e;
+      display: block;
+      font-weight: 500;
+      text-align: left;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 0.3rem;
+      border: 1.2px solid #b5c7d2;
+      border-radius: 8px;
+      background: #f5fafd;
+      color: #243241;
+      font-size: 1.03rem;
+      outline: none;
+      font-weight: 400;
+      transition: border-color 0.15s;
+      box-sizing: border-box;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #17e4c2;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: none;
+      background: #c896fc;
+      color: #111;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background: #b085e8;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      background-color: rgba(200, 200, 200, 0.2);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+      border-top: 2px solid #c896fc;
+      width: 100%;
+    }
+
+    footer p {
+      margin: 0.2rem 0;
+      color: #ddd;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Paula Pelizer</h1>
+    <button class="menu-toggle">☰</button>
+    <nav id="menu">
+      <a href="index.html">Início</a>
+      <a href="missao-visao.html">Missão e Visão</a>
+      <a href="listas.html">Hobbies</a>
+      <a href="galeria.html">Galeria</a>
+      <a href="feedback.html">Feedback</a>
+    </nav>
+  </header>
+
+  <div class="section-content">
+    <h2>Feedback</h2>
+    <form>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required />
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+      
+      <label for="endereco">Endereço Completo:</label>
+      <input type="text" id="endereco" name="endereco" required />
+      
+      <label for="tipo">Tipo de Feedback:</label>
+      <select id="tipo" name="tipo">
+        <option value="elogio">Elogio</option>
+        <option value="sugestao">Sugestão</option>
+        <option value="critica">Crítica</option>
+      </select>
+      
+      <label for="mensagem">Campo para o Feedback:</label>
+      <textarea id="mensagem" rows="4" name="mensagem" required></textarea>
+      
+      <button type="submit">Enviar Feedback</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Paula Pelizer. Todos os direitos reservados.</p>
+    <p>Curso +prati | Codifica</p>
+  </footer>
+
+  <script>
+    document.querySelector('form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Obrigada pelo seu feedback! Em breve entrarei em contato.');
+    });
+  </script>
+</body>
+</html>

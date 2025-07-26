@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galeria - Paula Pelizer</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      height: 100%;
+      background: #111;
+      color: white;
+    }
+
+    body {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 3rem 1rem 1rem;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background-color: rgba(200, 200, 200, 0.2);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1.2rem;
+      box-sizing: border-box;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      color: #c896fc;
+      margin: 0;
+    }
+
+    .menu-toggle {
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 6px;
+      padding: 0.2rem 0.5rem;
+      margin-left: auto;
+      position: relative;
+    }
+
+    nav {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: rgba(200, 200, 200, 0.3);
+      backdrop-filter: blur(10px);
+      padding: 0.5rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      margin-top: 0.3rem;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      z-index: 1001;
+    }
+
+    .menu-toggle:hover + nav,
+    nav:hover {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    nav a:hover {
+      background: #c896fc;
+      color: #111;
+    }
+
+    .section-content {
+      width: 95vw;
+      max-width: 1200px;
+      background-color: rgba(220, 220, 220, 0.2);
+      padding: 0.1rem;
+      border-radius: 20px;
+      border: 2px solid #c896fc;
+      box-shadow: 0 0 20px #c896fc;
+      backdrop-filter: blur(5px);
+      
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #c896fc;
+      margin-bottom: 0.5rem;
+    }
+
+    #galeria p {
+      margin: 0.2rem 0;
+      font-size: 0.9rem;
+    }
+
+    .gallery-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.6rem;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .gallery-row {
+      display: flex;
+      gap: 0.2rem;
+      justify-content: center;
+    }
+
+    .gallery-item {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(200, 150, 252, 0.3);
+      flex: 1;
+      max-width: 350px;
+      position: relative;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 80px;
+      object-fit: cover;
+      margin: 0 0 0.3rem 0;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-item img:hover {
+      transform: scale(1.1);
+    }
+
+    .gallery-item figcaption {
+      color: #c896fc;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    /* Tooltip */
+    .tooltip {
+      position: absolute;
+      top: -35px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.7rem;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .gallery-item:hover .tooltip {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 90%;
+      max-height: 90%;
+      text-align: center;
+    }
+
+    .modal-content img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(200, 150, 252, 0.5);
+    }
+
+    .modal-caption {
+      color: #c896fc;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #c896fc;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .close:hover {
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .gallery-container {
+        flex-direction: column;
+      }
+
+      .gallery-row {
+        flex-direction: column;
+      }
+
+      .gallery-item {
+        margin-bottom: 1rem;
+      }
+
+      nav {
+        right: -10px;
+        flex-direction: column;
+        min-width: 120px;
+      }
+
+      nav a {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+      }
+    }
+
+    footer {
+      background-color: rgba(200, 200, 200, 0.2);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+      border-top: 2px solid #c896fc;
+      width: 100%;
+    }
+
+    footer p {
+      margin: 0.2rem 0;
+      color: #ddd;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Paula Pelizer</h1>
+    <button class="menu-toggle">☰</button>
+    <nav id="menu">
+      <a href="index.html">Início</a>
+      <a href="missao-visao.html">Missão e Visão</a>
+      <a href="listas.html">Hobbies</a>
+      <a href="galeria.html">Galeria</a>
+      <a href="feedback.html">Feedback</a>
+    </nav>
+  </header>
+
+  <!-- Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <div class="modal-content">
+      <img id="modalImage" src="/placeholder.svg" alt="">
+      <div id="modalCaption" class="modal-caption"></div>
+    </div>
+  </div>
+
+  <div class="section-content">
+    <h2>Galeria</h2>
+    <p>Imagens dos meus hobbies e momentos especiais:</p>
+    <div class="gallery-container">
+      <div class="gallery-row">
+        <figure class="gallery-item">
+          <div class="tooltip">Clique para visualizar o álbum</div>
+          <img src="https://raw.githubusercontent.com/paulaPelizer/Front-End-Basic/refs/heads/main/codar.jpg" alt="Codar" onclick="openModal(this, 'Programando')">
+          <figcaption>Programando</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <div class="tooltip">Clique para visualizar o álbum</div>
+          <img src="https://raw.githubusercontent.com/paulaPelizer/Front-End-Basic/refs/heads/main/iceSkating.jpg" alt="Patinação" onclick="openModal(this, 'Patinação')">
+          <figcaption>Patinação</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <div class="tooltip">Clique para visualizar o álbum</div>
+          <img src="https://raw.githubusercontent.com/paulaPelizer/Front-End-Basic/refs/heads/main/TRAVEL.jpg" alt="Viagem" onclick="openModal(this, 'Viagem')">
+          <figcaption>Viagem</figcaption>
+        </figure>
+      </div>
+      <div class="gallery-row">
+        <figure class="gallery-item">
+          <div class="tooltip">Clique para visualizar o álbum</div>
+          <img src="https://raw.githubusercontent.com/paulaPelizer/Front-End-Basic/refs/heads/main/PIANO.jpg" alt="Piano" onclick="openModal(this, 'Piano')">
+          <figcaption>Piano</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <div class="tooltip">Clique para visualizar o álbum</div>
+          <img src="https://raw.githubusercontent.com/paulaPelizer/Front-End-Basic/refs/heads/main/SNOWBOARD.jpg" alt="Snowboard" onclick="openModal(this, 'Snowboard')">
+          <figcaption>Snowboard</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Paula Pelizer. Todos os direitos reservados.</p>
+    <p>Curso +prati | Codifica</p>
+  </footer>
+
+  <script>
+    // Modal functions
+    function openModal(img, caption) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      const modalCaption = document.getElementById('modalCaption');
+      
+      modal.style.display = 'block';
+      modalImg.src = img.src;
+      modalCaption.textContent = caption;
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
+    }
+
+    // Close modal events
+    document.querySelector('.close').onclick = closeModal;
+    document.getElementById('imageModal').onclick = function(e) {
+      if (e.target === this) closeModal();
+    };
+
+    // Keyboard close
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+</body>
+</html>
